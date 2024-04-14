@@ -1,50 +1,89 @@
 import java.util.Scanner;
+import java.util.List;
 import java.util.ArrayList;
-class HighestPrimeNumberInArray{
-	public static void main(String args[]){
-		Scanner sc=new Scanner(System.in);
-		System.out.print("\nEnter the size of array > ");
-		int size=sc.nextInt();
-		if(size<0){
-			System.out.println("\nInvalid Size..!");
+import java.util.Collections;
+public class HighestPrimeInArray{
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("\nEnter the size of array : ");
+		int size = sc.nextInt();
+
+		if(size <= 0){
+			System.out.println("\n"+size+" -> Array size must be greater than zero!");
+			sc.close();
 			return;
 		}
-		int a[]=new int[size];
-		System.out.println("\nEnter the elements > ");
-		for(int i=0;i<a.length;++i){
-			a[i]=sc.nextInt();
+
+		int a[] = new int[size];
+
+		System.out.println("\nEnter the elements : ");
+		takeInput(sc,a);
+
+		System.out.println("\nResulted Array : ");
+		printArray(a);
+
+		List<Integer> primesList = new ArrayList<Integer>();
+
+		int highestPrime = findHighestPrime(a,primesList);
+
+		if(highestPrime != -1){
+			System.out.println("\n"+highestPrime+" : Is The Highest Prime.");
+		}else{
+			System.out.println("\nNo Highest Prime Found !!");
 		}
-		System.out.print("\nResulted Array >> ");
-		for(int item:a){
-			System.out.print(item+" ");
-		}
-		ArrayList<Integer>primeList=new ArrayList<Integer>();
-		for(int i=0;i<a.length;++i){
-			if(isPrime(a[i])){
-				primeList.add(a[i]);
-			}else{
-				continue;
-			}
-		}
-		System.out.println("\nPrime Numbers List >> "+primeList);
-		int maxPrime=primeList.get(0);
-		for(int i=0;i<primeList.size();++i){
-			if(maxPrime<primeList.get(i)){
-				maxPrime=primeList.get(i);
-			}
-		}
-		System.out.println("\nMaximum Prime Number >> "+maxPrime);
+
+		sc.close();
+
 	}
-	public static boolean isPrime(int n){
-		int count=0;
-		for(int i=1;i<=n;++i){
-			if(n%i==0){
-				++count;
-			}
+	public static void takeInput(Scanner sc , int a[]){
+
+		for (int i = 0; i < a.length ; ++i ) {
+			 
+			 a[i] = sc.nextInt();
 		}
-		if(count==2){
-			return true;
+	}
+
+	public static void printArray(int a[]){
+
+		for (int item : a) {
+			 
+			 System.out.print(item+" ");
 		}
-		return false;
+	}
+
+	public static int findHighestPrime(int a[], List<Integer> primesList){
+
+		for (int item : a) {
+
+			 if(isPrime(item))primesList.add(item);
+		}
+
+		System.out.println("\nPrimes List :: "+primesList);
+
+		if(primesList.isEmpty()){
+
+			return -1;// No prime numbers found
+		}
+
+		Collections.sort(primesList);
+
+		int highestPrime = primesList.get(primesList.size()-1);
+
+		return highestPrime;
+
+	}
+	public static boolean isPrime(int num){
+
+		if(num <= 1)return false;
+
+		for (int i = 2; i<= Math.sqrt(num) ; ++i ) {
+
+			  if(num % i == 0) return false;
+		}
+
+		return true;
+
 	}
 }
