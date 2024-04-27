@@ -5,6 +5,7 @@ class DecimalToBinary{
 		System.out.print("\nEnter the number : ");
 		int num=sc.nextInt();
 		convertDecToBinary(num);
+		sc.close();
 	}
 	public static void convertDecToBinary(int num){
 		int binary[]=new int[30];
