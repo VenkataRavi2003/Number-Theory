@@ -11,5 +11,6 @@ class NumOfWordsInAString{
 			}
 		}
 		System.out.println("\nNo.Of Words -> "+wordCount);
+		sc.close();
 	}
 }
