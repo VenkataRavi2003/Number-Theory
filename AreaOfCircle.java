@@ -1,13 +1,12 @@
 import java.util.Scanner;
-class AreaOfCircle
-{
-public static void main(String...args)
-{
-double radius;
-System.out.print("ENTER THE RADIUS VALUE = ");
-Scanner p=new Scanner(System.in);
-radius=p.nextInt();
-double area=3.141*radius*radius;
-System.out.print("Area of the Circle is = " + area);
-}
+public class AreaOfCircle{
+  public static void main(String args[]){
+    Scanner sc = new Scanner(System.in);
+    System.out.print("\nEnter the radius : ");
+    double radius = sc.nextDouble();
+
+    double area_of_circle = Math.PI * radius * radius;
+    System.out.println("\nArea of the circle is : "+area_of_circle);
+    sc.close();
+  }
 }
