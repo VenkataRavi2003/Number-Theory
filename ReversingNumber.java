@@ -7,6 +7,7 @@ public class ReversingNumber{
 		System.out.println("\nBefore Reversing : "+num);
 		int rev=reverseNum(num);
 		System.out.println("\nAfter Reversing  : "+rev);
+		sc.close();
 	}
 	public static int reverseNum(int num){
 		int temp = num;
